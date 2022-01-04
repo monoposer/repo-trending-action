@@ -10,7 +10,7 @@ export type RepoItem = {
   username: string
   reponame: string
   description: string
-  startCount: string
+  starCount: string
   forkCount: string
 }
 
@@ -22,6 +22,10 @@ interface ApiResponse {
 export async function getTrendingWeekly(
   params: TrendingParams
 ): Promise<RepoItem[]> {
+  // if lang is empty, throw out error
+  if (params.lang === undefined || params.lang === null || params.lang === '') {
+    throw new TypeError(`${params.lang} param must be input`)
+  }
   const jsonData = {
     category: 'upcome',
     period: 'week',

@@ -1,6 +1,6 @@
 import * as core from '@actions/core'
+import {getNowDate, writeMarkdown} from './file'
 import {getTrendingWeekly} from './api'
-import { createMarkdown, writeMarkdown } from './file'
 
 const XITU_HOST = 'e.juejin.cn'
 
@@ -11,15 +11,15 @@ async function run(): Promise<void> {
 
     const repoItems = await getTrendingWeekly({host: XITU_HOST, lang})
     core.debug(JSON.stringify(repoItems))
-    
-    core.debug("creating file and writing....")
-    createMarkdown(lang)
-    writeMarkdown(repoItems)
-    core.debug("writing completed....")
-    
-    // TODO commit and push
 
-    core.setOutput('time', new Date().toTimeString())
+    const date = getNowDate()
+    const path = `${__dirname}/${lang}/${date}.md`
+
+    core.debug('creating file and writing....')
+    await writeMarkdown(path, lang, repoItems)
+    core.debug('writing completed....')
+
+    // TODO commit and push
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

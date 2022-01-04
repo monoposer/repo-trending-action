@@ -2,7 +2,7 @@
   "name": "repo-trending-action",
   "version": "1.0.0",
   "private": true,
-  "description": "TypeScript template action",
+  "description": "Fetch spec lang new repos weekly",
   "main": "lib/main.js",
   "scripts": {
     "build": "tsc",
@@ -15,20 +15,26 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/actions/typescript-action.git"
+    "url": "git+https://github.com/monoposer/repo-trending-action.git"
   },
   "keywords": [
-    "actions",
-    "node",
-    "setup"
+    "github",
+    "trending"
   ],
-  "author": "",
+  "author": "SolaTyolo",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/monoposer/repo-trending-action/issues"
+  },
+  "homepage": "https://github.com/monoposer/repo-trending-action#readme",
   "dependencies": {
     "@actions/core": "^1.6.0",
-    "@actions/http-client": "^1.0.11"
+    "@actions/http-client": "^1.0.11",
+    "fs-extra": "^10.0.0"
   },
   "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/jest": "^27.4.0",
     "@types/node": "^16.10.5",
     "@typescript-eslint/parser": "^5.8.1",
     "@vercel/ncc": "^0.31.1",
@@ -36,6 +42,7 @@
     "eslint-plugin-github": "^4.3.2",
     "eslint-plugin-jest": "^25.3.2",
     "jest": "^27.2.5",
+    "jest-circus": "^27.4.5",
     "js-yaml": "^4.1.0",
     "prettier": "2.5.1",
     "ts-jest": "^27.1.2",
