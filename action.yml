@@ -1,6 +1,11 @@
 name: "Trending Repo Weekly"
 description: "Fetch hot and new repos weekly"
-author: "SolaTyolo"
+author: "SolaTyolo<solat.yolo@gmail.com>"
+
+branding:
+  icon: 'cloud'
+  color: 'purple'
+
 inputs:
   lang: # change this
     required: true
@@ -8,8 +13,9 @@ inputs:
     default: "go"
   github-token:
     required: false
-    description: "Token to get an authenticated"
+    description: "[Optional] Token to get an authenticated github cli"
     default: ${{secrets.GITHUB_TOKEN}}
+
 runs:
   using: "node12"
   main: "dist/index.js"
