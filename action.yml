@@ -1,0 +1,15 @@
+name: "Trending Repo Weekly"
+description: "Fetch hot and new repos weekly"
+author: "SolaTyolo"
+inputs:
+  lang: # change this
+    required: true
+    description: "Lang that need to fetch"
+    default: "go"
+  github-token:
+    required: false
+    description: "Token to get an authenticated"
+    default: ${{secrets.GITHUB_TOKEN}}
+runs:
+  using: "node12"
+  main: "dist/index.js"
