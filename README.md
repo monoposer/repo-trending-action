@@ -43,8 +43,8 @@ jobs:
 
 + Single lang,  see [single-template](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/go.yml)
 + Multi-language acquisition in two modes
-  - Use multiple workflows, and the input parameters and time settings in each workflow are different. For details, see [go用例](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/go.yml) and [rust用例](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/rust.yml)
-  - Use the matrix feature of the workflow, see  [并行用例](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/parallel.yml)
+  - Use multiple workflows, and the input parameters and time settings in each workflow are different. For details, see [go-sample](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/go.yml) and [rust-sample](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/rust.yml)
+  - Use the matrix feature of the workflow, see  [parallel-sample](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/parallel.yml)
 
 
 # License
