@@ -11,10 +11,6 @@ inputs:
     required: true
     description: "Lang that need to fetch"
     default: "go"
-  github-token:
-    required: false
-    description: "[Optional] Token to get an authenticated github cli"
-    default: ${{secrets.GITHUB_TOKEN}}
 
 runs:
   using: "node12"

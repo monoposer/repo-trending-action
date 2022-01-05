@@ -18,8 +18,6 @@ async function run(): Promise<void> {
     core.debug('creating file and writing....')
     await writeMarkdown(path, lang, repoItems)
     core.debug('writing completed....')
-
-    // TODO commit and push
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

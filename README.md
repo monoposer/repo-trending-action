@@ -1,25 +1,25 @@
-
 # Trending Repo Weekly
 
-This action crawl the hottest repo of github trending: 
--  specified lang: go , java, javascript, vue and so on
+This action crawl the hottest repo of github trending:
 
+- specified lang: go , java, javascript, vue and so on
 
 # Usage
-
 
 See [action.yml](action.yml)
 
 Basic:
+
 ```yaml
 steps:
     - uses: actions/checkout@master
-    - uses: actions/trending-repo-weekly@v1
-       with: 
+    - uses: monoposer/trending-repo-weekly@v1
+       with:
            lang: go
 ```
 
-Matrix 
+Matrix
+
 ```yaml
 jobs:
     build:
@@ -31,9 +31,39 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Trending Repo
-               uses: actions/trending-repo-weekly@v1
+               uses: monoposer/trending-repo-weekly@v1
                with:
                    lang: ${{matrix.lang}}
+```
+
+# A Demo With Push Cahnges
+
+> need to use github-push-action to push to repo, see  [template](https://github.com/monoposer/repo-trending-template)
+
+```yaml
+jobs:
+    Crawl-Build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v2
+
+            - name: Fetch Trending Repo
+              uses: monoposer/trending-repo-weekly@v1
+                with:
+                    lang: go
+            - name: Commit Files
+               run:  |
+                   git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+                   git config --local user.name "github-actions[bot]"
+                   git commit -m "Update" -a
+
+            - name: Push Changes
+               uses: ad-m/github-push-action@master
+               with:
+                   github_token: ${{secrets.GITHUB_TOKEN}}
+                   branch: ${{github.ref}}
 ```
 
 # License
