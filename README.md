@@ -1,8 +1,10 @@
 # Trending Repo Weekly
 
+[中文说明](README-zh.md)
+
 This action crawl the hottest repo of github trending:
 
-- specified lang: go , java, javascript, vue and so on
+- You can use the input parameter lang: go , java, javascript, vue and so on
 
 # Usage
 
@@ -36,37 +38,14 @@ jobs:
                    lang: ${{matrix.lang}}
 ```
 
-# A Demo With Push Changes
+# Sample With Push Changes
+> Since this repository is for a single lang, multi-lang needs to be combined with workflow and github-push-action
 
-> need to use github-push-action to push to repo, see  [template](https://github.com/monoposer/repo-trending-template)
++ Single lang,  see [single-template](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/go.yml)
++ Multi-language acquisition in two modes
+  - Use multiple workflows, and the input parameters and time settings in each workflow are different. For details, see [go用例](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/go.yml) and [rust用例](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/rust.yml)
+  - Use the matrix feature of the workflow, see  [并行用例](https://github.com/SolaTyolo/repo-trending/blob/main/.github/workflows/parallel.yml)
 
-```yaml
-jobs:
-  Crawl-Build:
-    
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
-
-    - name: Fetch Trending Repo
-      uses: monoposer/repo-trending-action@v1.2.0
-      with:
-        lang: go
-
-    - name: Commit Files
-      run:  |
-        git add .
-        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --global user.name "github-actions[bot]"
-        git commit -m "Update"
-
-    - name: Push Changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{secrets.GITHUB_TOKEN}}
-        branch: ${{github.ref}}
-```
 
 # License
 
