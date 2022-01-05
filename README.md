@@ -13,7 +13,7 @@ Basic:
 ```yaml
 steps:
     - uses: actions/checkout@master
-    - uses: monoposer/repo-trending-action@v1.1.0
+    - uses: monoposer/repo-trending-action@v1.2.0
        with:
            lang: go
 ```
@@ -31,7 +31,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - name: Trending Repo
-               uses: monoposer/repo-trending-action@v1.1.0
+               uses: monoposer/repo-trending-action@v1.2.0
                with:
                    lang: ${{matrix.lang}}
 ```
@@ -50,15 +50,16 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Fetch Trending Repo
-      uses: monoposer/repo-trending-action@v1.1.0
+      uses: monoposer/repo-trending-action@v1.2.0
       with:
         lang: go
 
     - name: Commit Files
       run:  |
-        git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git config --local user.name "github-actions[bot]"
-        git commit -m "Update" -a
+        git add .
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+        git config --global user.name "github-actions[bot]"
+        git commit -m "Update"
 
     - name: Push Changes
       uses: ad-m/github-push-action@master

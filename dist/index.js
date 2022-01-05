@@ -161,15 +161,14 @@ function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const lang = core.getInput('lang');
-            core.debug(`get ${lang} repo trending`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
+            core.info(`get ${lang} repo trending`); // debug is only output if you set the secret `ACTIONS_STEP_DEBUG` to true
             const repoItems = yield (0, api_1.getTrendingWeekly)({ host: XITU_HOST, lang });
             core.debug(JSON.stringify(repoItems));
             const date = (0, file_1.getNowDate)();
-            const path = `${__dirname}/${lang}/${date}.md`;
-            core.debug('creating file and writing....');
+            const path = `${process.cwd()}/${lang}/${date}.md`;
+            core.info('creating file and writing....');
             yield (0, file_1.writeMarkdown)(path, lang, repoItems);
-            core.debug('writing completed....');
-            // TODO commit and push
+            core.info('writing completed....');
         }
         catch (error) {
             if (error instanceof Error)
