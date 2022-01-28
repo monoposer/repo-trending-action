@@ -4,7 +4,7 @@
 - 可以用参数lang指定语言仓库: go, java, javascript等
 
 # 使用
-具体请看 action.yml
+具体请看  [action.yml](action.yml)
 
 ## 单语言用法
 
